@@ -6,44 +6,71 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component, Fragment } from 'react';
+import {
+  AppRegistry,
+  Image,
+  Text,
+  TextInput,
+  View
+} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-export default class App extends Component<Props> {
+
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      resizeMode: "cover",
+      remote: 'https://source.unsplash.com/daily?chill',
+      text: ""
+    }
+  }
+
   render() {
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Fragment>
+        <View style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+        }}>
+          <Image
+            style={{
+              backgroundColor: '#ccc',
+              flex: 1,
+              resizeMode: this.state.resizeMode,
+              position: 'absolute',
+              zIndex: -1,
+              width: '100%',
+              height: '100%',
+              justifyContent: 'center',
+            }}
+            source={{ uri: this.state.remote }}
+          >
+
+          </Image>
+        </View>
+        <View style={{
+          flex: 1,
+          backgroundColor: 'transparent',
+          justifyContent: 'center',
+        }}>
+          <TextInput
+            style={{ height: 40 ,backgroundColor:"#FFFFFF"}}
+            placeholder="Type here to translate!"
+            onChangeText={(text) => this.setState({ text })}
+          />
+          <Text> {this.state.text}</Text>
+        </View>
+      </Fragment>
+
+
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+AppRegistry.registerComponent('App', () => App);
