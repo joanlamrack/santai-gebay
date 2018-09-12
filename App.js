@@ -10,8 +10,8 @@ import React, { Component, Fragment } from "react";
 import {
 	AppRegistry,
 	Image,
-	Text,
 	TextInput,
+	Text,
 	View,
 	Button,
 	Alert
@@ -22,13 +22,21 @@ export default class App extends Component {
 		super();
 		this.state = {
 			resizeMode: "cover",
-			remote: "https://source.unsplash.com/daily?chill",
-			username: "",
-			password:""
+			remote: "https://i1.wp.com/get.wallpapers8k.com/wallpapers/b/d/3/161113.jpg",
 		};
 	}
 
 	render() {
+		let TextInputStyle = {
+			height: 50,
+			backgroundColor: "white",
+			padding:10,
+			margin: 10,
+			fontSize: 20,
+			borderRadius: 30,
+			color: "#FFFFFF"
+		};
+
 		return (
 			<Fragment>
 				<View
@@ -57,27 +65,19 @@ export default class App extends Component {
 				<View
 					style={{
 						flex: 1,
-						backgroundColor: "transparent",
 						justifyContent: "center"
 					}}
 				>
 					<TextInput
-						style={{ height: 40, backgroundColor: "#FFFFFF", margin:5 }}
+						style={TextInputStyle}
 						placeholder="Username"
-						
 						onChangeText={username => this.setState({ username })}
-					/>
-					<TextInput
-						style={{ height: 40, backgroundColor: "#FFFFFF", margin:5 }}
-						placeholder="Password"
-						onChangeText={password => this.setState({ password })}
+						placeholderTextColor="gray"
 					/>
 					<Button
-						onPress={() => {
-							Alert.alert(this.state.username, this.state.password);
-						}}
-						style={{marginLeft:20, marginRight:20}}
-						title="Sign In"
+						title={"Cari"}
+						onPress={() => this.setState({ signin: !this.state.signin })}
+						color="#00000000"
 					/>
 				</View>
 			</Fragment>
