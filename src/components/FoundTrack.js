@@ -31,19 +31,22 @@ export default class App extends Component {
 	}
 
 	render() {
-		let height = Dimensions.get("window").width * 0.5;
+		let height = Dimensions.get("window").width * 0.8;
 		return (
 			<View
 				style={{
-					padding: 5
+					flex: 1,
+					width: "100%",
+					alignItems: "center",
+					paddingTop: "5%"
 				}}
 			>
 				<Image
 					resizeMode="stretch"
-					style={{ height: height, width: "50%" }}
+					style={{ height: height, width: "80%" }}
 					source={{ uri: this.state.picture }}
 				/>
-				<View>
+				<View style={{ alignItems: "center" }}>
 					<Text
 						style={{
 							fontSize: 20
