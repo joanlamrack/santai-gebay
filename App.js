@@ -14,7 +14,8 @@ import {
 	Text,
 	View,
 	Button,
-	Alert
+	Alert,
+	FlatList
 } from "react-native";
 
 export default class App extends Component {
@@ -30,11 +31,10 @@ export default class App extends Component {
 		let TextInputStyle = {
 			height: 50,
 			backgroundColor: "white",
-			padding:10,
+			padding:15,
 			margin: 10,
 			fontSize: 20,
-			borderRadius: 30,
-			color: "#FFFFFF"
+			borderRadius: 35
 		};
 
 		return (
@@ -64,21 +64,92 @@ export default class App extends Component {
 				</View>
 				<View
 					style={{
-						flex: 1,
 						justifyContent: "center"
 					}}
 				>
 					<TextInput
 						style={TextInputStyle}
-						placeholder="Username"
+						placeholder="Search"
 						onChangeText={username => this.setState({ username })}
 						placeholderTextColor="gray"
+						underlineColorAndroid='transparent'
 					/>
-					<Button
-						title={"Cari"}
-						onPress={() => this.setState({ signin: !this.state.signin })}
-						color="#00000000"
-					/>
+					<FlatList
+					data={[
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						{
+							hehe:"woi",
+							id:"1"
+						},
+						{
+							hehe:"woi2",
+							id:"2"
+						},
+						]}
+					keyExtractor={(item)=>item.id}
+					renderItem={
+						(data)=>{
+							return (
+								<Text style={{color:"white", fontSize:30}}>{data.item.hehe}</Text>
+							)
+						}
+					}
+					></FlatList>
 				</View>
 			</Fragment>
 		);
